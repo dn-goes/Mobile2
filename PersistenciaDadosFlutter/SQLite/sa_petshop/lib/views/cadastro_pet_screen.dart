@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sa_petshop/controllers/pet_controller.dart';
-import 'package:sa_petshop/home_screen.dart';
 import 'package:sa_petshop/models/pet_model.dart';
+import 'package:sa_petshop/views/home_screen.dart';
 
 
 class CadastroPetScreen extends StatefulWidget{

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sa_petshop/cadastro_pet_screen.dart';
 import 'package:sa_petshop/controllers/pet_controller.dart';
 import 'package:sa_petshop/models/pet_model.dart';
-
+import 'package:sa_petshop/views/detalhe_pet_screen.dart';
 
 class HomeScreen  extends StatefulWidget{ // recebe as  notificações de mudança e chama o build da tela
   @override
@@ -60,8 +60,8 @@ class _HomeScreenState extends State<HomeScreen>{ // buildar a tela
             return ListTile( //item da ListView
               title: Text("${pet.nome} - ${pet.raca}"),
               subtitle: Text("${pet.nomeDono} - ${pet.telefone}"),
-              //onTap: () => , //página de detalhe do PET
-              //onLongPress: ()=> , // deletar o Pet
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> DetalhePetScreen(petId: pet.id!))), //página de detalhe do PET
+              onLongPress: ()=> _deletarPet(pet.id!), // deletar o Pet
             );
           }),),
       floatingActionButton: FloatingActionButton(
@@ -71,5 +71,19 @@ class _HomeScreenState extends State<HomeScreen>{ // buildar a tela
         child: Icon(Icons.add),
       ),
     );
+  }
+  _deletarPet(int id) async{
+    try {
+      _controllerPet.deletePet(id);
+      _carregarDados();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Pet Deletado com Sucesso!!"))
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Exception: $e"))
+      );
+      
+    }
   }
 }
