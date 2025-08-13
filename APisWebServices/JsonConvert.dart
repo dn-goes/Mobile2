@@ -1,27 +1,27 @@
 //converter Json <-> Dart
-import 'dart:convert'; //não precisa instalar no PubSpec /Nativa do Dart
+import 'dart:convert'; //não precisa instalar no PubSp
 
-void main() {
+void main(){
   String jsonString = '''{
-                      "id": "abc123",
-                      "nome":"Pedro",
-                      "idade":25,
-                      "ativo":true,
-                      "login":"UserPedro",
-                      "password":"1234"
-                    }''';
-  //decode jsonString
-  Map<String, dynamic> usuario = json.decode(jsonString);
+    "id": "abc123",
+    "nome": "João",
+    "idade": 30,
+    "ativo": true,
+    "login": "joao123",
+    "senha": "senha123"
+  }''';
 
-  print(usuario["nome"]); //Pedro
-  print(usuario["login"]); // UserPedro
+  // Converter JSON para objeto Dart
+  Map<String, dynamic> user = json.decode(jsonString);
+  print('Nome: \'${user['nome']}\''); // João
+  print('Login: \'${user['login']}\''); // joao123
 
-  // modificar  a Senha para 6 digitos / Salvar no JsonString
+  // Modificar a senha para 6 dígitos
+  user['senha'] = 'nova12';
+  print('Senha modificada: \'${user['senha']}\'');
 
-  usuario["password"] = "123456";
-
-  //gravar no Json
-  jsonString = json.encode(usuario);
-
-  print(jsonString);
+  // Salvar no JsonString
+  String updatedJsonString = json.encode(user);
+  print('JSON atualizado: $updatedJsonString');
+  // {"id":"abc123","nome":"João","idade":30,"ativo":true,"login":"joao123","senha":"nova12"}
 }

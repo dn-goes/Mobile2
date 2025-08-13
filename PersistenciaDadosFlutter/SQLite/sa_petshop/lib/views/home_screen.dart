@@ -1,7 +1,7 @@
 //tela inicial que vai listar os Pets do cadastro, 
 
 import 'package:flutter/material.dart';
-import 'package:sa_petshop/cadastro_pet_screen.dart';
+import 'package:sa_petshop/views/cadastro_pet_screen.dart';
 import 'package:sa_petshop/controllers/pet_controller.dart';
 import 'package:sa_petshop/models/pet_model.dart';
 import 'package:sa_petshop/views/detalhe_pet_screen.dart';
